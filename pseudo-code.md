@@ -51,7 +51,7 @@ These are functions neccessary to streamline the function of the application. Pr
 
 #### Liquid Volume
 
-- cups \ 8 = fluid_ounce
+- cups * 8 = fluid_ounce
 - fluid_ounce \* 19.57 = milliliter
 - fluid_ounce \ 32 = quarts
 - quarts \* 0.946 \* 1000 = milliliter
