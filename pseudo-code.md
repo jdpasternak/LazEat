@@ -2,10 +2,10 @@
 
 ## Contents
 
-[Pages](#pages)
-[Interactive Objects](#interactive-objects)
-[Utilities](#utilities)
-[Additional Features](#additional-features)
+- [Pages](#pages)
+- [Interactive Objects](#interactive-objects)
+- [Utilities](#utilities)
+- [Additional Features](#additional-features)
 
 ---
 
