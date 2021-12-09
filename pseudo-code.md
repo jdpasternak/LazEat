@@ -9,6 +9,17 @@
 
 ---
 
+## Functionality
+
+When a certain weather or temperature is detected in a location, a certain food preparation type is selected to accommodate.
+
+### Examples
+
+If the weather is rainy, snowy, or cold, a soup or stew is selected.
+If the weather is hot or sunny, a salad or wrap is selected.
+
+---
+
 ## Pages
 
 - [Main Page](#main-page)
@@ -51,7 +62,7 @@ These are functions neccessary to streamline the function of the application. Pr
 
 #### Liquid Volume
 
-- cups * 8 = fluid_ounce
+- cups \* 8 = fluid_ounce
 - fluid_ounce \* 19.57 = milliliter
 - fluid_ounce \ 32 = quarts
 - quarts \* 0.946 \* 1000 = milliliter
