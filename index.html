@@ -1,99 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LazEat!</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LazEat!</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+        <link rel="stylesheet" href="../assets/css/style.css">
+    </head>
 
-<body>
-    <header>
-        <h1>
-            <a href="/">LAZEAT</a>
-        </h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#why-lazeat">Why LazEat!</a>
-                </li>
-                <li>
-                    <a href="#who-are-we">Who are we</a>
-                </li>
-                <li>
-                    <a href="#random1">random1</a>
-                </li>
-                <li>
-                    <a href="random2">random2</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-
-<!-- hero section -->
-    <section class="hero">
-        <div class="hero-container">
-            <h2>LAZEAT!</h2>
-            <p>isjbfkefn hisufbnlkjp osiehnflk siuh sieuh hweipj hwoehn sehn shoiqhwn iebh</p>
-            <input type="text" placeholder="So where are you, lazee?" name="inputlocation" class="location">
-            <button type="submit">
-                lazeat!
-            </button>
-            <!-- do background img in CSS-->
-        </div>
-        <!--css floats/ flexbox / grid-->
-    </section>
-
-<!-- result-->
-    <section class="result">
-        <div>
-            <h2>Based on your local wealther...</h2>
-        </div>
-
-        <div class="recipes">
-            <article class="recipe">
-                <img src="./assets/images/recipe-1.jpg">
-                <div>
-                    <h3 class="recipe-name">Chicken Soup</h3>
-                    <h4 class="recipe-ingredients">chicken, carrots...</h4>
+    <body>
+        <div class="container">
+        <header>
+            <nav>
+                <h1></h1>
+                <div class="navbar-fixed">
+                    <a href="#" class="brand-logo left">LAZEAT</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <span id="tempeture"></span>
+                        <span id="icon"></span>
+                    </ul>
                 </div>
-            </article>
+            </nav>
+        </header>
 
-            <article class="recipe">
-                <img src="./assets/images/recipe-2.jpg">
-                <div>
-                    <h3 class="recipe-name">Beef Soup</h3>
-                    <h4 class="recipe-ingredients">beef, tomato...</h4>
+    <!-- hero section -->
+        <section class="card">
+
+            <div class="container center-align">
+                <h2>LAZEAT!</h2>
+                <p>isjbfkefn hisufbnlkjp osiehnflk siuh sieuh hweipj hwoehn sehn shoiqhwn iebh</p>
+                <input type="text" placeholder="So where are you, lazee?" name="inputlocation" class="location">
+                <button type="submit">
+                    LAZEAT!
+                </button>
+                <!-- do background img in CSS-->
+            </div>
+        </section>
+
+    <!-- result-->
+        <section class="result">
+            <div>
+                <h3>Based on your local wealther...</h3>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m6">
+                  <div class="card">
+                    <div class="card-image">
+                        <img src="./assets/images/recipe.png">
+                        <div>
+                            <span class="card-title">Chicken Soup</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>                        
+                        </div>
+                        <div class="card-content">
+                            <p class="recipe-ingredients">chicken, carrots...</p>
+                        </div>
+                    </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="recipe">
-                <img src="./assets/images/recipe-3.jpg">
-                <div>
-                    <h3 class="recipe-name">Pork Soup</h3>
-                    <h4 class="recipe-ingredients">pork, potato...</h4>
+            <div class="row">
+                <div class="col s12 m6">
+                  <div class="card">
+                    <div class="card-image">
+                        <img src="./assets/images/recipe.png">
+                        <div>
+                            <span class="card-title">Chicken Soup</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>                      
+                         </div>
+                        <div class="card-content">
+                            <p class="recipe-ingredients">chicken, carrots...</p>
+                        </div>
+                    </div>
                 </div>
-            </article>
+            </div>
 
-        </div>
+            <div class="row">
+                <div class="col s12 m6">
+                  <div class="card">
+                    <div class="card-image">
+                        <img src="./assets/images/recipe.png">
+                        <div>
+                            <span class="card-title">Chicken Soup</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>                        
+                        </div>
+                        <div class="card-content">
+                            <p class="recipe-ingredients">chicken, carrots...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="wealther">
-
-
-        </div>
-    </section>
-
-<!-- Why lazeat-->
-
-<!-- who are we-->
-
-<!-- random 1-->
-
-<!-- random 2-->
-    <footer>
-        <h2>❤️ Made with love by LAZEAT! ❤️</h2>
-    </footer>
-</body>
-
+        <footer class="page-footer">
+            <div class="footer-copyright">
+              <div class="container">
+              © 2014 Copyright Text ❤️ Made with love by LAZEAT! ❤️
+              </div>
+            </div>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
 </html>
