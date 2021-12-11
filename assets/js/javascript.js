@@ -1,6 +1,10 @@
 // import * as UnitConversion from "./unit-conversion.js";
 
 const API_KEY = "5e465552b5b1cf92efd83e5e7d35aea2"; // Jake's API key, used for testing. Can be replaced with production API key
+const RECIPE_API_KEY = {
+  app_id: "72992508",
+  app_key: "f051ae9c54b955c20f627d764a400a0d",
+};
 
 const RECIPES = {
   normal: [
@@ -97,6 +101,58 @@ var chooseRecipesFromWeather = (weatherData) => {
   //    get recipes that are for hot days
   //  else if weatherData.temperature is less than XX F
   //    get recipes that are for cold days
+
+  // returns an array of recipes / recipe URIs
+  return [];
+};
+
+var displayRecipeInModal = (recipeData) => {
+  $("#recipeName").text(recipeData.label);
+  // Display Recipe Name
+  var recipeIngredientsEl = $("#recipeIngredients");
+
+  // Display Recipe Servings
+  $("#recipeServings").text(recipeData.yield);
+
+  // Display Recipe Ingredients
+  recipeData.ingredientLines.forEach((l) => {
+    var recipeIngredient = $("li");
+    $("li").text(l);
+    recipeIngredientsEl.append(recipeIngredient);
+  });
+
+  // Display Link to Instructions
+  $("#recipeInstructions").text(recipeData.source);
+  $("#recipeInstructions").href(recipeData.url);
+
+  // Display Nutrition Information
+  var nutrients = recipeData.totalNutrients;
+  var calories = nutrients.ENERC_KCAL.quantity;
+  var fat = nutrients.FAT.quantity;
+  var carbs = nutrients.CHOCDF.quantity;
+  var fiber = nutrients.FIBTG.quantity;
+  var sugar = nutrients.SUGAR.quantity;
+  var protein = nutrients.PROCNT.quantity;
+  // Calories
+  $("#recipeCalories").text(calories);
+
+  // Total Fat
+  $("#recipeFat").text(fat);
+
+  // Total Protein
+  $("#recipeProtein").text(protein);
+
+  // Total Carbohydrates
+  $("#recipeCarbs").text(carbs);
+
+  // Total Sugar
+  $("#recipeSugar").text(sugar);
+
+  // Total Fiber
+  $("#recipeFiber").text(fiber);
+
+  // Open the modal
+  $("#recipeModal").modal("open");
 };
 
 getWeather("Mililani");
