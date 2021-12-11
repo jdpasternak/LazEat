@@ -31,3 +31,11 @@ $(document).ready(() => {
     $("#recipeModal").modal("open");
   });
 });
+
+var lazeatHandler = () => {
+  
+}
+
+var getWeather = () => {
+
+}
