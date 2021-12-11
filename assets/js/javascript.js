@@ -92,7 +92,7 @@ var getWeather = (city) => {
   });
 };
 
-var pickFoodFromWeather = (weatherData) => {
+var chooseRecipesFromWeather = (weatherData) => {
   //  if weatherData.temperature is greater than XX F
   //    get recipes that are for hot days
   //  else if weatherData.temperature is less than XX F
