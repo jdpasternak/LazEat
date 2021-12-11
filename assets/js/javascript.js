@@ -2,6 +2,24 @@
 
 const API_KEY = "5e465552b5b1cf92efd83e5e7d35aea2"; // Jake's API key, used for testing. Can be replaced with production API key
 
+const RECIPES = {
+  normal: [
+    // some normal dishes
+  ],
+  hot: [
+    // salads and wraps
+  ],
+  cold: {
+    rainy: [
+      // some soups
+    ],
+
+    snowy: [
+      // some stews and chilis
+    ],
+  },
+};
+
 // fetch("api.edamam.com/api/nutrition-data");
 // fetch(
 //   "api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}"
