@@ -25,5 +25,9 @@
   }
 */
 
-$("#recipeModal").modal();
-$("#recipeModal").modal("open");
+$(document).ready(() => {
+  $("#recipeModal").modal();
+  $(".view-recipe").on("click", () => {
+    $("#recipeModal").modal("open");
+  });
+});
