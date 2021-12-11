@@ -53,8 +53,8 @@ var lazeatHandler = () => {
         currentWeather: response.weather[0].main,
         currentTemperature: response.main.temp,
       };
-      // TODO: Do something with the weather data
       console.log(weatherData);
+      // TODO: Do something with the weather data
     },
   });
 };
@@ -72,6 +72,13 @@ var getWeather = (city) => {
       console.log(weatherData);
     },
   });
+};
+
+var pickFoodFromWeather = (weatherData) => {
+  //  if weatherData.temperature is greater than XX F
+  //    get recipes that are for hot days
+  //  else if weatherData.temperature is less than XX F
+  //    get recipes that are for cold days
 };
 
 getWeather("Mililani");
