@@ -1,5 +1,7 @@
 // import * as UnitConversion from "./unit-conversion.js";
 
+const API_KEY = "5e465552b5b1cf92efd83e5e7d35aea2"; // Jake's API key, used for testing. Can be replaced with production API key
+
 // fetch("api.edamam.com/api/nutrition-data");
 // fetch(
 //   "api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}"
@@ -30,17 +32,46 @@ $(document).ready(() => {
   $(".view-recipe").on("click", () => {
     $("#recipeModal").modal("open");
   });
+  $("#lazeat").on("click", lazeatHandler);
 });
 
 var lazeatHandler = () => {
-  var inputLocation = $(`input[name="inputLocation"`).val();
+  var inputLocation = $(`#inputLocation`).val();
   if (inputLocation === "") {
     M.toast({
-      html: ""
-    })
+      html: "You must enter a city",
+    });
+    return false;
   }
-}
 
-var getWeather = () => {
+  var weatherData = {};
 
-}
+  $.ajax({
+    url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`,
+    success: (response) => {
+      weatherData = {
+        currentWeather: response.weather[0].main,
+        currentTemperature: response.main.temp,
+      };
+      // TODO: Do something with the weather data
+      console.log(weatherData);
+    },
+  });
+};
+
+var getWeather = (city) => {
+  var weatherData = {};
+
+  $.ajax({
+    url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`,
+    success: (response) => {
+      weatherData = {
+        currentWeather: response.weather[0].main,
+        currentTemperature: response.main.temp,
+      };
+      console.log(weatherData);
+    },
+  });
+};
+
+getWeather("Mililani");
