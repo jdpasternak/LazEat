@@ -39,12 +39,22 @@
             isjbfkefn hisufbnlkjp osiehnflk siuh sieuh hweipj hwoehn sehn
             shoiqhwn iebh
           </p>
-          <input
-            type="text"
-            placeholder="So where are you, lazee?"
-            name="inputLocation"
-            class="location"
-          />
+          <div class="input-field">
+            <input
+              type="text"
+              placeholder="So where are you, lazee?"
+              name="inputLocation"
+              id="inputLocation"
+              class="location validate"
+              required
+            />
+            <label for="inputLocation"> City </label>
+            <span
+              class="helper-text"
+              data-error="You must enter a city."
+            ></span>
+          </div>
+
           <button type="submit">LAZEAT!</button>
           <!-- do background img in CSS-->
         </div>

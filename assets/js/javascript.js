@@ -33,7 +33,12 @@ $(document).ready(() => {
 });
 
 var lazeatHandler = () => {
-  
+  var inputLocation = $(`input[name="inputLocation"`).val();
+  if (inputLocation === "") {
+    M.toast({
+      html: ""
+    })
+  }
 }
 
 var getWeather = () => {
