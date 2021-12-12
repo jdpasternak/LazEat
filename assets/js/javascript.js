@@ -109,30 +109,32 @@ var chooseRecipesFromWeather = (weatherData) => {
 var displayRecipeInModal = (recipeData) => {
   $("#recipeName").text(recipeData.label);
   // Display Recipe Name
-  var recipeIngredientsEl = $("#recipeIngredients");
 
   // Display Recipe Servings
   $("#recipeServings").text(recipeData.yield);
 
   // Display Recipe Ingredients
+  var recipeIngredientsEl = $("#recipeIngredients");
   recipeData.ingredientLines.forEach((l) => {
-    var recipeIngredient = $("li");
-    $("li").text(l);
+    console.log(l);
+    var recipeIngredient = $("<li>");
+    recipeIngredient.text(l);
+    console.log(recipeIngredient);
     recipeIngredientsEl.append(recipeIngredient);
   });
 
   // Display Link to Instructions
   $("#recipeInstructions").text(recipeData.source);
-  $("#recipeInstructions").href(recipeData.url);
+  $("#recipeInstructions").attr("href", recipeData.url);
 
   // Display Nutrition Information
   var nutrients = recipeData.totalNutrients;
-  var calories = nutrients.ENERC_KCAL.quantity;
-  var fat = nutrients.FAT.quantity;
-  var carbs = nutrients.CHOCDF.quantity;
-  var fiber = nutrients.FIBTG.quantity;
-  var sugar = nutrients.SUGAR.quantity;
-  var protein = nutrients.PROCNT.quantity;
+  var calories = Math.round(nutrients.ENERC_KCAL.quantity);
+  var fat = Math.round(nutrients.FAT.quantity);
+  var carbs = Math.round(nutrients.CHOCDF.quantity);
+  var fiber = Math.round(nutrients.FIBTG.quantity);
+  var sugar = Math.round(nutrients.SUGAR.quantity);
+  var protein = Math.round(nutrients.PROCNT.quantity);
   // Calories
   $("#recipeCalories").text(calories);
 
@@ -154,5 +156,17 @@ var displayRecipeInModal = (recipeData) => {
   // Open the modal
   $("#recipeModal").modal("open");
 };
+
+/* 
+  Testing
+*/
+// Displays Modal with Sample Recipe Information
+$.ajax({
+  url: "https://api.edamam.com/api/recipes/v2/recipe_697f97298fa57124c35067fac86d57d3?type=public&app_id=72992508&app_key=f051ae9c54b955c20f627d764a400a0d&q=chicken%20soup",
+  success: (response) => {
+    console.log(response.recipe);
+    displayRecipeInModal(response.recipe);
+  },
+});
 
 getWeather("Mililani");
