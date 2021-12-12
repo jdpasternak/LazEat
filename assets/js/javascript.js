@@ -96,6 +96,7 @@ var getWeather = (city) => {
   });
 };
 
+// TODO
 var chooseRecipesFromWeather = (weatherData) => {
   //  if weatherData.temperature is greater than XX F
   //    get recipes that are for hot days
@@ -161,12 +162,12 @@ var displayRecipeInModal = (recipeData) => {
   Testing
 */
 // Displays Modal with Sample Recipe Information
-$.ajax({
-  url: "https://api.edamam.com/api/recipes/v2/recipe_697f97298fa57124c35067fac86d57d3?type=public&app_id=72992508&app_key=f051ae9c54b955c20f627d764a400a0d&q=chicken%20soup",
-  success: (response) => {
-    console.log(response.recipe);
-    displayRecipeInModal(response.recipe);
-  },
-});
+// $.ajax({
+//   url: "https://api.edamam.com/api/recipes/v2/recipe_697f97298fa57124c35067fac86d57d3?type=public&app_id=72992508&app_key=f051ae9c54b955c20f627d764a400a0d&q=chicken%20soup",
+//   success: (response) => {
+//     console.log(response.recipe);
+//     displayRecipeInModal(response.recipe);
+//   },
+// });
 
-getWeather("Mililani");
+// getWeather("Mililani");
