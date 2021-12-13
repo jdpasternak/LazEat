@@ -173,6 +173,18 @@ var chooseRecipesFromWeather = (weatherData) => {
   //  else if weatherData.temperature is less than XX F
   //    get recipes that are for cold days
 
+  if (weatherData.currentWeather === "Rain") {
+    return RECIPES.cold.rainy;
+  } else if (weatherData.currentWeather === "Snow") {
+    return RECIPES.cold.snowy;
+  } else if (weatherData.currentTemperature > 72) {
+    return RECIPES.hot;
+  } else if (weatherData.currentTemperature < 72) {
+    return RECIPES.cold.rainy.concat(RECIPES.cold.snowy);
+  } else {
+    return RECIPES.normal;
+  }
+
   // returns an array of recipes / recipe URIs
   return [];
 };
