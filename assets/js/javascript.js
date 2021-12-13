@@ -129,25 +129,37 @@ var getWeatherData = (city) => {
 
   $.ajax({
     url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`,
-    success: (response) => {
+  })
+    .done((response) => {
       weatherData = {
         currentWeather: response.weather[0].main,
         currentTemperature: response.main.temp,
       };
       console.log(weatherData);
       chooseRecipesFromWeather(weatherData);
-    },
-  });
+    })
+    .fail(() => {
+      M.toast({
+        html: "Invalid city name!",
+        classes: "red",
+      });
+    });
 };
 
 var getRecipeData = (evt) => {
   var recipeId = evt.target.dataset.recipeid;
   $.ajax({
     url: `https://api.edamam.com/api/recipes/v2/${recipeId}?type=public&app_id=72992508&app_key=f051ae9c54b955c20f627d764a400a0d&q=chicken%20soup`,
-    success: (response) => {
+  })
+    .done((response) => {
       displayRecipeInModal(response.recipe);
-    },
-  });
+    })
+    .fail(() => {
+      M.toast({
+        html: "Something went wrong...",
+        classes: "red",
+      });
+    });
 };
 
 // TODO
