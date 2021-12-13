@@ -168,21 +168,16 @@ var getRecipeData = (evt) => {
 
 // TODO
 var chooseRecipesFromWeather = (weatherData) => {
-  //  if weatherData.temperature is greater than XX F
-  //    get recipes that are for hot days
-  //  else if weatherData.temperature is less than XX F
-  //    get recipes that are for cold days
-
   if (weatherData.currentWeather === "Rain") {
-    return RECIPES.cold.rainy;
+    displayRecipeSuggestions(RECIPES.cold.rainy);
   } else if (weatherData.currentWeather === "Snow") {
-    return RECIPES.cold.snowy;
+    displayRecipeSuggestions(RECIPES.cold.snowy);
   } else if (weatherData.currentTemperature > 72) {
-    return RECIPES.hot;
+    displayRecipeSuggestions(RECIPES.hot);
   } else if (weatherData.currentTemperature < 72) {
-    return RECIPES.cold.rainy.concat(RECIPES.cold.snowy);
+    displayRecipeSuggestions(RECIPES.cold.rainy.concat(RECIPES.cold.snowy));
   } else {
-    return RECIPES.normal;
+    displayRecipeSuggestions(RECIPES.normal);
   }
 };
 
