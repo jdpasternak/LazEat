@@ -68,8 +68,6 @@ $(document).ready(() => {
     $("#recipeModal").modal("open");
   });
   $("#lazeat").on("click", lazeatHandler);
-  // TODO: move this to suggested recipe generation function
-  $(".view-recipe").on("click", getRecipeData);
 });
 
 var lazeatHandler = () => {
@@ -81,7 +79,9 @@ var lazeatHandler = () => {
     return false;
   }
 
-  getWeatherData(inputLocation);
+  displayRecipeSuggestions(RECIPES.normal);
+
+  // getWeatherData(inputLocation);
 
   // var weatherData = {};
 
@@ -96,6 +96,50 @@ var lazeatHandler = () => {
   //     // TODO: Do something with the weather data
   //   },
   // });
+};
+
+var displayRecipeSuggestions = (recipeSuggestions) => {
+  $("#recipeSuggestions").html("");
+  recipeSuggestions.forEach((r) => {
+    $.ajax({
+      url: `https://api.edamam.com/api/recipes/v2/${r}?type=public&app_id=72992508&app_key=f051ae9c54b955c20f627d764a400a0d&q=chicken%20soup`,
+      success: (response) => {
+        var recipe = response.recipe;
+        var recipeName = recipe.label;
+        var imageSrc = recipe.image;
+
+        var recipeEl = $(`<div class="col s12 m6">`);
+
+        var templateHTML = `<div class="card">
+          <div class="card-image">
+            <img src="${imageSrc}" />
+            <span class="card-title">${recipeName}</span>
+            <a
+              class="
+                btn-floating
+                halfway-fab
+                waves-effect waves-light
+                red
+              "
+            >
+              <i
+                class="material-icons view-recipe"
+                data-recipeId="${r}"
+                >menu_book</i
+              >
+            </a>
+            </div>
+            <div class="card-content">
+            </div>
+          </div>
+        </div>`;
+        recipeEl.html(templateHTML);
+        $("#recipeSuggestions").append(recipeEl);
+
+        $(".view-recipe").on("click", getRecipeData);
+      },
+    });
+  });
 };
 
 var getWeatherData = (city) => {
@@ -144,11 +188,10 @@ var displayRecipeInModal = (recipeData) => {
 
   // Display Recipe Ingredients
   var recipeIngredientsEl = $("#recipeIngredients");
+  recipeIngredientsEl.html("");
   recipeData.ingredientLines.forEach((l) => {
-    console.log(l);
     var recipeIngredient = $("<li>");
     recipeIngredient.text(l);
-    console.log(recipeIngredient);
     recipeIngredientsEl.append(recipeIngredient);
   });
 
