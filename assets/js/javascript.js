@@ -133,9 +133,14 @@ var getWeatherData = (city) => {
     .done((response) => {
       weatherData = {
         currentWeather: response.weather[0].main,
+        weatherIconCode: response.weather[0].icon,
         currentTemperature: response.main.temp,
       };
-      console.log(weatherData);
+      $("#temperature").text(`${weatherData.currentTemperature} °F`);
+      $("#icon").attr(
+        "src",
+        `http://openweathermap.org/img/wn/${weatherData.weatherIconCode}.png`
+      );
       chooseRecipesFromWeather(weatherData);
     })
     .fail(() => {
