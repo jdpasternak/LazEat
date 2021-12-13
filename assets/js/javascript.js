@@ -184,9 +184,6 @@ var chooseRecipesFromWeather = (weatherData) => {
   } else {
     return RECIPES.normal;
   }
-
-  // returns an array of recipes / recipe URIs
-  return [];
 };
 
 var displayRecipeInModal = (recipeData) => {
