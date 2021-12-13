@@ -79,23 +79,7 @@ var lazeatHandler = () => {
     return false;
   }
 
-  displayRecipeSuggestions(RECIPES.normal);
-
-  // getWeatherData(inputLocation);
-
-  // var weatherData = {};
-
-  // $.ajax({
-  //   url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`,
-  //   success: (response) => {
-  //     weatherData = {
-  //       currentWeather: response.weather[0].main,
-  //       currentTemperature: response.main.temp,
-  //     };
-  //     console.log(weatherData);
-  //     // TODO: Do something with the weather data
-  //   },
-  // });
+  getWeatherData(inputLocation);
 };
 
 var displayRecipeSuggestions = (recipeSuggestions) => {
