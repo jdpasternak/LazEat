@@ -68,7 +68,7 @@ $(document).ready(() => {
     $("#recipeModal").modal("open");
   });
   $("#lazeat").on("click", lazeatHandler);
-  // TESTING: change callback function when done
+  // TODO: move this to suggested recipe generation function
   $(".view-recipe").on("click", getRecipeData);
 });
 
