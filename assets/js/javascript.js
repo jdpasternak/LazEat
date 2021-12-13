@@ -7,18 +7,31 @@ const RECIPE_API_KEY = {
 };
 
 const RECIPES = {
+  //three dishes per conditon
   normal: [
+    "recipe_93cbf92ffaf9ed77ca8e994fe37f0b00",
+    "recipe_93b072c256f0c872828739f513845c40",
+    "recipe_3f0e1e064ff883a51d4465e21e39d3a5",
     // some normal dishes
   ],
   hot: [
+    "recipe_e6a7f65164a66214485b66c0adb29d9f",
+    "recipe_b2b04888a2da6a8982b6ff8df7c23170",
+    "recipe_73b8318e4a125489cb4afa0b426af31e",
     // salads and wraps
   ],
   cold: {
     rainy: [
+      "recipe_e9dc2828174fb39cc9cd55b99513fded",
+      "recipe_bcf47f108aaae018cea2803d58cd2f6d",
+      "recipe_8e0360adf98ab17c1b50d8f4003e7d3a",
       // some soups
     ],
 
     snowy: [
+      "recipe_6d86591aaf8f4923910d3c051fe343d4",
+      "recipe_14c68e61108cc0829ee6ef279f79b860",
+      "recipe_a3cdb1df44fe9648eddcdc8e529fd9f1",
       // some stews and chilis
     ],
   },
