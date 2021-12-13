@@ -129,8 +129,6 @@ var displayRecipeSuggestions = (recipeSuggestions) => {
               >
             </a>
             </div>
-            <div class="card-content">
-            </div>
           </div>
         </div>`;
         recipeEl.html(templateHTML);
