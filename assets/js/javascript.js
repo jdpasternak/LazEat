@@ -55,6 +55,8 @@ $(document).ready(() => {
     $("#recipeModal").modal("open");
   });
   $("#lazeat").on("click", lazeatHandler);
+  // TESTING: change callback function when done
+  $(".view-recipe").on("click", getRecipeData);
 });
 
 var lazeatHandler = () => {
@@ -77,6 +79,16 @@ var lazeatHandler = () => {
       };
       console.log(weatherData);
       // TODO: Do something with the weather data
+    },
+  });
+};
+
+var getRecipeData = (evt) => {
+  var recipeId = evt.target.dataset.recipeid;
+  $.ajax({
+    url: `https://api.edamam.com/api/recipes/v2/${recipeId}?type=public&app_id=72992508&app_key=f051ae9c54b955c20f627d764a400a0d&q=chicken%20soup`,
+    success: (response) => {
+      displayRecipeInModal(response.recipe);
     },
   });
 };
