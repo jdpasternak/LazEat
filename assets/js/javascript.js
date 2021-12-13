@@ -60,7 +60,7 @@ $(document).ready(() => {
 });
 
 var lazeatHandler = () => {
-  var inputLocation = $(`#inputLocation`).val();
+  var inputLocation = $(`#inputLocation`).val().trim();
   if (inputLocation === "") {
     M.toast({
       html: "You must enter a city",
@@ -68,6 +68,24 @@ var lazeatHandler = () => {
     return false;
   }
 
+  getWeatherData(inputLocation);
+
+  // var weatherData = {};
+
+  // $.ajax({
+  //   url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`,
+  //   success: (response) => {
+  //     weatherData = {
+  //       currentWeather: response.weather[0].main,
+  //       currentTemperature: response.main.temp,
+  //     };
+  //     console.log(weatherData);
+  //     // TODO: Do something with the weather data
+  //   },
+  // });
+};
+
+var getWeatherData = (city) => {
   var weatherData = {};
 
   $.ajax({
@@ -78,7 +96,7 @@ var lazeatHandler = () => {
         currentTemperature: response.main.temp,
       };
       console.log(weatherData);
-      // TODO: Do something with the weather data
+      chooseRecipesFromWeather(weatherData);
     },
   });
 };
@@ -89,21 +107,6 @@ var getRecipeData = (evt) => {
     url: `https://api.edamam.com/api/recipes/v2/${recipeId}?type=public&app_id=72992508&app_key=f051ae9c54b955c20f627d764a400a0d&q=chicken%20soup`,
     success: (response) => {
       displayRecipeInModal(response.recipe);
-    },
-  });
-};
-
-var getWeather = (city) => {
-  var weatherData = {};
-
-  $.ajax({
-    url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`,
-    success: (response) => {
-      weatherData = {
-        currentWeather: response.weather[0].main,
-        currentTemperature: response.main.temp,
-      };
-      console.log(weatherData);
     },
   });
 };
