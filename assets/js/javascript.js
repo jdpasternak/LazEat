@@ -71,6 +71,7 @@ $(document).ready(() => {
   });
   $("#lazeat").on("click", lazeatHandler);
   $("#favoriteBtn").on("click", addFavoriteHandler);
+  $("#viewFavoritesBtn").on("click", viewFavoritesHandler);
   loadFavorites();
 });
 
@@ -183,6 +184,18 @@ var chooseRecipesFromWeather = (weatherData) => {
     displayRecipeSuggestions(RECIPES.cold.rainy.concat(RECIPES.cold.snowy));
   } else {
     displayRecipeSuggestions(RECIPES.normal);
+  }
+};
+
+var viewFavoritesHandler = (evt) => {
+  console.log(favorites);
+  if (favorites.length > 0) {
+    displayRecipeSuggestions(favorites);
+  } else {
+    M.toast({
+      html: "No favorites saved",
+      classes: "orange",
+    });
   }
 };
 
