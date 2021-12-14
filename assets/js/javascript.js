@@ -247,7 +247,8 @@ var displayRecipeInModal = (recipeData, recipeId) => {
   $("#recipeName").text(recipeData.label);
 
   // Display Recipe Servings
-  $("#recipeServings").text(recipeData.yield);
+  var servings = recipeData.yield;
+  $("#recipeServings").text(servings);
 
   // Display Recipe Ingredients
   var recipeIngredientsEl = $("#recipeIngredients");
@@ -264,12 +265,12 @@ var displayRecipeInModal = (recipeData, recipeId) => {
 
   // Display Nutrition Information
   var nutrients = recipeData.totalNutrients;
-  var calories = Math.round(nutrients.ENERC_KCAL.quantity);
-  var fat = Math.round(nutrients.FAT.quantity);
-  var carbs = Math.round(nutrients.CHOCDF.quantity);
-  var fiber = Math.round(nutrients.FIBTG.quantity);
-  var sugar = Math.round(nutrients.SUGAR.quantity);
-  var protein = Math.round(nutrients.PROCNT.quantity);
+  var calories = Math.round(nutrients.ENERC_KCAL.quantity) / servings;
+  var fat = Math.round(nutrients.FAT.quantity / servings);
+  var carbs = Math.round(nutrients.CHOCDF.quantity / servings);
+  var fiber = Math.round(nutrients.FIBTG.quantity / servings);
+  var sugar = Math.round(nutrients.SUGAR.quantity / servings);
+  var protein = Math.round(nutrients.PROCNT.quantity / servings);
   // Calories
   $("#recipeCalories").text(calories);
 
