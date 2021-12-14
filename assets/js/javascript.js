@@ -70,6 +70,8 @@ $(document).ready(() => {
     $("#recipeModal").modal("open");
   });
   $("#lazeat").on("click", lazeatHandler);
+  $("#favoriteBtn").on("click", addFavoriteHandler);
+  loadFavorites();
 });
 
 var lazeatHandler = () => {
@@ -184,6 +186,27 @@ var chooseRecipesFromWeather = (weatherData) => {
   }
 };
 
+var saveFavorites = () => {
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+};
+
+var loadFavorites = () => {
+  favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  console.log(favorites);
+};
+
+var addFavoriteHandler = (evt) => {
+  console.log(evt.target);
+  if ($(evt.target).text() === "favorite") {
+    $(evt.target).text("favorite_border");
+    removeRecipeFromFavorites(evt.target.dataset.recipeid);
+  } else if ($(evt.target).text() === "favorite_border") {
+    $(evt.target).text("favorite");
+    addRecipeToFavories(evt.target.dataset.recipeid);
+  }
+  saveFavorites();
+};
+
 var addRecipeToFavories = (recipeId) => {
   favorites.push(recipeId);
 };
@@ -200,8 +223,12 @@ var removeRecipeFromFavorites = (recipeId) => {
 
 var displayRecipeInModal = (recipeData, recipeId) => {
   // Add recipe ID data to favorite button
-  $(".favorite-btn").attr("data-recipeid", recipeId);
-  $(".favorite-btn")
+  $("#favoriteBtn").attr("data-recipeid", recipeId);
+  if (!favorites.includes(recipeId)) {
+    $("#favoriteBtn").text("favorite_border");
+  } else {
+    $("#favoriteBtn").text("favorite");
+  }
 
   // Display Recipe Name
   $("#recipeName").text(recipeData.label);
