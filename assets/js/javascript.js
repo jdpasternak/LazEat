@@ -1,5 +1,3 @@
-// import * as UnitConversion from "./unit-conversion.js";
-
 const API_KEY = "5e465552b5b1cf92efd83e5e7d35aea2"; // Jake's API key, used for testing. Can be replaced with production API key
 const RECIPE_API_KEY = {
   app_id: "72992508",
@@ -9,60 +7,30 @@ const RECIPE_API_KEY = {
 var favorites = [];
 
 const RECIPES = {
-  //three dishes per conditon
   normal: [
     "recipe_93cbf92ffaf9ed77ca8e994fe37f0b00",
     "recipe_93b072c256f0c872828739f513845c40",
     "recipe_3f0e1e064ff883a51d4465e21e39d3a5",
-    // some normal dishes
   ],
   hot: [
     "recipe_e6a7f65164a66214485b66c0adb29d9f",
     "recipe_b2b04888a2da6a8982b6ff8df7c23170",
     "recipe_73b8318e4a125489cb4afa0b426af31e",
-    // salads and wraps
   ],
   cold: {
     rainy: [
       "recipe_e9dc2828174fb39cc9cd55b99513fded",
       "recipe_bcf47f108aaae018cea2803d58cd2f6d",
       "recipe_8e0360adf98ab17c1b50d8f4003e7d3a",
-      // some soups
     ],
 
     snowy: [
       "recipe_6d86591aaf8f4923910d3c051fe343d4",
       "recipe_14c68e61108cc0829ee6ef279f79b860",
       "recipe_a3cdb1df44fe9648eddcdc8e529fd9f1",
-      // some stews and chilis
     ],
   },
 };
-
-// fetch("api.edamam.com/api/nutrition-data");
-// fetch(
-//   "api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}"
-// );
-/* 
-  Pseudo Code
-
-  "Where are you" as Button
-  button is clicked, do => {
-    open a modal asking for current location (city or zip?)
-    when modal is submitted,
-      fetch weather data and appropriate recipes
-      display to suggested recipes below
-  }
-
-  Suggest recipe is clicked, do => {
-    open a modal with
-      recipe name
-      weather best to eat during
-      ingredients
-      steps
-      nutrition facts
-  }
-*/
 
 $(document).ready(() => {
   $("#recipeModal").modal();
@@ -188,7 +156,6 @@ var chooseRecipesFromWeather = (weatherData) => {
 };
 
 var viewFavoritesHandler = (evt) => {
-  console.log(favorites);
   if (favorites.length > 0) {
     displayRecipeSuggestions(favorites);
   } else {
@@ -205,11 +172,9 @@ var saveFavorites = () => {
 
 var loadFavorites = () => {
   favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  console.log(favorites);
 };
 
 var addFavoriteHandler = (evt) => {
-  console.log(evt.target);
   if ($(evt.target).text() === "favorite") {
     $(evt.target).text("favorite_border");
     removeRecipeFromFavorites(evt.target.dataset.recipeid);
@@ -292,17 +257,3 @@ var displayRecipeInModal = (recipeData, recipeId) => {
   // Open the modal
   $("#recipeModal").modal("open");
 };
-
-/* 
-  Testing
-*/
-// Displays Modal with Sample Recipe Information
-// $.ajax({
-//   url: "https://api.edamam.com/api/recipes/v2/recipe_697f97298fa57124c35067fac86d57d3?type=public&app_id=72992508&app_key=f051ae9c54b955c20f627d764a400a0d&q=chicken%20soup",
-//   success: (response) => {
-//     console.log(response.recipe);
-//     displayRecipeInModal(response.recipe);
-//   },
-// });
-
-// getWeather("Mililani");
