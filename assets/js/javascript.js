@@ -6,6 +6,8 @@ const RECIPE_API_KEY = {
   app_key: "f051ae9c54b955c20f627d764a400a0d",
 };
 
+var favorites = [];
+
 const RECIPES = {
   //three dishes per conditon
   normal: [
@@ -157,7 +159,7 @@ var getRecipeData = (evt) => {
     url: `https://api.edamam.com/api/recipes/v2/${recipeId}?type=public&app_id=72992508&app_key=f051ae9c54b955c20f627d764a400a0d&q=chicken%20soup`,
   })
     .done((response) => {
-      displayRecipeInModal(response.recipe);
+      displayRecipeInModal(response.recipe, recipeId);
     })
     .fail(() => {
       M.toast({
@@ -182,9 +184,27 @@ var chooseRecipesFromWeather = (weatherData) => {
   }
 };
 
-var displayRecipeInModal = (recipeData) => {
-  $("#recipeName").text(recipeData.label);
+var addRecipeToFavories = (recipeId) => {
+  favorites.push(recipeId);
+};
+
+var removeRecipeFromFavorites = (recipeId) => {
+  var keptFavorites = [];
+  favorites.forEach((f) => {
+    if (f !== recipeId) {
+      keptFavorites.push(f);
+    }
+  });
+  favorites = keptFavorites;
+};
+
+var displayRecipeInModal = (recipeData, recipeId) => {
+  // Add recipe ID data to favorite button
+  $(".favorite-btn").attr("data-recipeid", recipeId);
+  $(".favorite-btn")
+
   // Display Recipe Name
+  $("#recipeName").text(recipeData.label);
 
   // Display Recipe Servings
   $("#recipeServings").text(recipeData.yield);
