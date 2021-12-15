@@ -230,7 +230,7 @@ var displayRecipeInModal = (recipeData, recipeId) => {
 
   // Display Nutrition Information
   var nutrients = recipeData.totalNutrients;
-  var calories = Math.round(nutrients.ENERC_KCAL.quantity) / servings;
+  var calories = Math.round(nutrients.ENERC_KCAL.quantity / servings);
   var fat = Math.round(nutrients.FAT.quantity / servings);
   var carbs = Math.round(nutrients.CHOCDF.quantity / servings);
   var fiber = Math.round(nutrients.FIBTG.quantity / servings);
