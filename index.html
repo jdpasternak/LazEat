@@ -1,12 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foodies App!</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazEat!</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <h1></h1>
+          <div class="navbar-fixed">
+            <a href="#" class="brand-logo left">LAZEAT</a>
+            <div class="right">
+              <span id="temperature"></span>
+              <img id="icon" src="" />
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!-- hero section -->
+      <section class="card">
+        <div class="container center-align">
+          <h2>LAZEAT!</h2>
+          <p>
+            Enter your current city to get recipe recommendations for the
+            weather in your area.
+          </p>
+          <div class="input-field">
+            <input
+              type="text"
+              placeholder="So where are you, lazee?"
+              name="inputLocation"
+              id="inputLocation"
+              class="location validate"
+              required
+            />
+            <label for="inputLocation"> City </label>
+            <span
+              class="helper-text"
+              data-error="You must enter a city."
+            ></span>
+          </div>
+
+          <button id="lazeat" type="submit">LAZEAT!</button>
+          <button
+            id="viewFavoritesBtn"
+            class="btn-flat waves-effect waves-yellow"
+          >
+            View Favorites
+          </button>
+          <!-- do background img in CSS-->
+        </div>
+      </section>
+
+      <!-- result-->
+      <section class="result">
+        <div>
+          <h3>Based on your local wealther...</h3>
+        </div>
+
+        <div class="row" id="recipeSuggestions"></div>
+      </section>
+
+      <footer class="page-footer">
+        <div class="footer-copyright">
+          <div class="container">
+            © 2021 Copyright ❤️ Made with love by LAZEAT! ❤️
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Recipe Modal -->
+    <div id="recipeModal" class="modal">
+      <div class="modal-content">
+        <h4 id="left recipeName">
+          RecipeName
+          <span id="favoriteBtn" class="material-icons btn-flat"
+            >favorite_border</span
+          >
+        </h4>
+        <p>Serves <span id="recipeServings"></span></p>
+        <h5>Ingredients</h5>
+        <ul id="recipeIngredients"></ul>
+        <h5>Instructions</h5>
+        <p>
+          View this recipe on
+          <a id="recipeInstructions" target="_blank"></a> for instructions.
+        </p>
+        <h5>Nutrition Information</h5>
+        <p id="recipeNutrition"></p>
+        <h6>Calories</h6>
+        <p><span id="recipeCalories"></span> kCal</p>
+        <h6>Carbs</h6>
+        <p><span id="recipeCarbs"></span>g</p>
+        <h6>Protein</h6>
+        <p><span id="recipeProtein"></span>g</p>
+        <h6>Fat</h6>
+        <p><span id="recipeFat"></span>g</p>
+        <h6>Fiber</h6>
+        <p><span id="recipeFiber"></span>g</p>
+        <h6>Sugar</h6>
+        <p><span id="recipeSugar"></span>g</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-red btn-flat"
+          >Close</a
+        >
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="assets/js/javascript.js"></script>
+  </body>
 </html>
