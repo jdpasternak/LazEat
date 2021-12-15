@@ -218,7 +218,7 @@ var displayRecipeInModal = (recipeData, recipeId) => {
   var recipeIngredientsEl = $("#recipeIngredients");
   recipeIngredientsEl.html("");
   recipeData.ingredientLines.forEach((l) => {
-    var recipeIngredient = $("<li>");
+    var recipeIngredient = $(`<li class="collection-item">`);
     recipeIngredient.text(l);
     recipeIngredientsEl.append(recipeIngredient);
   });
