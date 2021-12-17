@@ -34,11 +34,8 @@ const RECIPES = {
 
 $(document).ready(() => {
   $("#recipeModal").modal();
-  $(".view-recipe").on("click", () => {
-    $("#recipeModal").modal("open");
-  });
   $("#lazeat").on("click", lazeatHandler);
-  $("#favoriteBtn").on("click", addFavoriteHandler);
+
   $("#viewFavoritesBtn").on("click", viewFavoritesHandler);
   loadFavorites();
 });
@@ -60,14 +57,14 @@ var displayRecipeSuggestions = (recipeSuggestions) => {
   recipeSuggestions.forEach((r) => {
     $.ajax({
       url: `https://api.edamam.com/api/recipes/v2/${r}?type=public&app_id=72992508&app_key=f051ae9c54b955c20f627d764a400a0d&q=chicken%20soup`,
-      success: (response) => {
-        var recipe = response.recipe;
-        var recipeName = recipe.label;
-        var imageSrc = recipe.image;
+    }).done((response) => {
+      var recipe = response.recipe;
+      var recipeName = recipe.label;
+      var imageSrc = recipe.image;
 
-        var recipeEl = $(`<div class="col s12 m6">`);
+      var recipeEl = $(`<div class="col s12 m6">`);
 
-        var templateHTML = `<div class="card">
+      var templateHTML = `<div class="card">
           <div class="card-image">
             <img src="${imageSrc}" />
             <span class="card-title">${recipeName}</span>
@@ -88,11 +85,9 @@ var displayRecipeSuggestions = (recipeSuggestions) => {
             </div>
           </div>
         </div>`;
-        recipeEl.html(templateHTML);
-        $("#recipeSuggestions").append(recipeEl);
-
-        $(".view-recipe").on("click", getRecipeData);
-      },
+      recipeEl.html(templateHTML);
+      $("#recipeSuggestions").append(recipeEl);
+      recipeEl.find(".view-recipe").on("click", getRecipeData);
     });
   });
 };
@@ -209,7 +204,11 @@ var displayRecipeInModal = (recipeData, recipeId) => {
   }
 
   // Display Recipe Name
-  $("#recipeName").text(recipeData.label);
+  var recipeNameContent = `${recipeData.label}<span id="favoriteBtn" class="material-icons btn-flat"
+  >favorite_border</span
+>`;
+  $("#recipeName").html(recipeNameContent);
+  $("#favoriteBtn").on("click", addFavoriteHandler);
 
   // Display Recipe Servings
   var servings = recipeData.yield;
@@ -219,7 +218,7 @@ var displayRecipeInModal = (recipeData, recipeId) => {
   var recipeIngredientsEl = $("#recipeIngredients");
   recipeIngredientsEl.html("");
   recipeData.ingredientLines.forEach((l) => {
-    var recipeIngredient = $("<li>");
+    var recipeIngredient = $(`<li class="collection-item">`);
     recipeIngredient.text(l);
     recipeIngredientsEl.append(recipeIngredient);
   });
@@ -230,7 +229,7 @@ var displayRecipeInModal = (recipeData, recipeId) => {
 
   // Display Nutrition Information
   var nutrients = recipeData.totalNutrients;
-  var calories = Math.round(nutrients.ENERC_KCAL.quantity) / servings;
+  var calories = Math.round(nutrients.ENERC_KCAL.quantity / servings);
   var fat = Math.round(nutrients.FAT.quantity / servings);
   var carbs = Math.round(nutrients.CHOCDF.quantity / servings);
   var fiber = Math.round(nutrients.FIBTG.quantity / servings);

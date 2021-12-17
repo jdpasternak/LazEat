@@ -93,34 +93,46 @@
     <!-- Recipe Modal -->
     <div id="recipeModal" class="modal">
       <div class="modal-content">
-        <h4 id="left recipeName">
-          RecipeName
-          <span id="favoriteBtn" class="material-icons btn-flat"
-            >favorite_border</span
-          >
-        </h4>
+        <h4 id="recipeName">RecipeName</h4>
         <p>Serves <span id="recipeServings"></span></p>
         <h5>Ingredients</h5>
-        <ul id="recipeIngredients"></ul>
+        <ul id="recipeIngredients" class="collection"></ul>
         <h5>Instructions</h5>
         <p>
           View this recipe on
           <a id="recipeInstructions" target="_blank"></a> for instructions.
         </p>
         <h5>Nutrition Information</h5>
-        <p id="recipeNutrition"></p>
-        <h6>Calories</h6>
-        <p><span id="recipeCalories"></span> kCal</p>
-        <h6>Carbs</h6>
-        <p><span id="recipeCarbs"></span>g</p>
-        <h6>Protein</h6>
-        <p><span id="recipeProtein"></span>g</p>
-        <h6>Fat</h6>
-        <p><span id="recipeFat"></span>g</p>
-        <h6>Fiber</h6>
-        <p><span id="recipeFiber"></span>g</p>
-        <h6>Sugar</h6>
-        <p><span id="recipeSugar"></span>g</p>
+        <div class="row">
+          <table class="col s8 offset-s2">
+            <tbody>
+              <tr>
+                <th>Calories</th>
+                <td><span id="recipeCalories"></span> kCal</td>
+              </tr>
+              <tr>
+                <th>Carbs</th>
+                <td><span id="recipeCarbs"></span>g</td>
+              </tr>
+              <tr>
+                <th>Protein</th>
+                <td><span id="recipeProtein"></span>g</td>
+              </tr>
+              <tr>
+                <th>Fat</th>
+                <td><span id="recipeFat"></span>g</td>
+              </tr>
+              <tr>
+                <th>Fiber</th>
+                <td><span id="recipeFiber"></span>g</td>
+              </tr>
+              <tr>
+                <th>Sugar</th>
+                <td><span id="recipeSugar"></span>g</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-red btn-flat"
