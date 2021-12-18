@@ -2,25 +2,29 @@
 
 ## Description
 
-Generate meal suggestions based on selected protein and current weather.
+Generate meal suggestions based on a city and its current weather.
 
-## User Story
+### User Story
 
 AS A lazy, remote worker with little time to decide what to eat,
-I WANT to view suggestions based on a chosen protein and preparation based on the current weather
-SO THAT I can make a decision on what to eat without thinking to much.
+I WANT to view suggestions based on the weather in my area
+SO THAT I can make a decision on what to eat without thinking too much.
 
-## Wireframe
+## Screenshot
 
-![A wireframe of the LazEat app](assets/images/wireframe.png)
+![A screenshot of the LazEat app](assets/images/lazeat-screenshot.PNG)
+
+## Live Site
+
+[Link](https://afaed.github.com/LazEat)
 
 ## APIs Used
 
-- USDA Food Nutrition Facts
+- Edamam Recipe API
 
-- OpenWeatherMap
+- OpenWeatherMap API
 
-## Breakdown of Tasks
+## Contributors
 
 **Justin** - APIs
 
